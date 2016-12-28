@@ -21,26 +21,21 @@ public class Student {
 	@Column(name = "id")
 	private Integer id;
 
-	@NotNull(message = "Must specify first name!")
 	@Column(name = "first_name")
 	private String firstName;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "university_id")
-	@NotNull(message="University must be filled!")
 	private University university;
 
-	@NotNull(message = "Must specify last name!")
 	@Column(name = "last_name")
 	private String lastName;
 
-	@NotNull(message = "Must specify age!")
 	@Min(value = 0, message = "Can not be less than 0")
 	@Max(value = 100, message = "Can not be greater than 100")
 	@Column(name = "age")
 	private Integer age;
 
-	@NotNull(message = "Must specify gender!")
 	@Column(name = "gender")
 	private String gender;
 

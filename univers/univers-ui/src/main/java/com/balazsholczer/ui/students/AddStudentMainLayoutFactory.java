@@ -34,7 +34,9 @@ public class AddStudentMainLayoutFactory {
 		private TextField lastName;
 		private TextField age;
 		private ComboBox gender;
-		private ComboBox university;
+		private TextField universityName;
+		private TextField universityCity;
+		private TextField universityCountry;
 		private Button saveButton;
 		private Button clearButton;
 
@@ -56,12 +58,15 @@ public class AddStudentMainLayoutFactory {
 			lastName = new TextField(StudentsStringUtils.LAST_NAME.getString());
 			age = new TextField(StudentsStringUtils.AGE.getString());
 			gender = new ComboBox(StudentsStringUtils.GENDER.getString());
+			universityName = new TextField("Clinic Name");
+			universityCity = new TextField("Clinic City");
+			universityCountry = new TextField("Clinic Country");
 
 			saveButton = new Button(StudentsStringUtils.SAVE_BUTTON.getString());
 			clearButton = new Button(StudentsStringUtils.CLEAR_BUTTON.getString());
 			
-			university = new ComboBox(StudentsStringUtils.UNIVERSITY.getString());
-			university.setWidth("100%");
+			//university = new ComboBox(StudentsStringUtils.UNIVERSITY.getString());
+			//university.setWidth("100%");
 			
 			saveButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
 			clearButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
@@ -89,7 +94,7 @@ public class AddStudentMainLayoutFactory {
 
 			setMargin(true);
 
-			GridLayout gridLayout = new GridLayout(2, 4);
+			GridLayout gridLayout = new GridLayout(2, 5);
 			gridLayout.setSizeUndefined();
 			gridLayout.setSpacing(true);
 
@@ -99,9 +104,13 @@ public class AddStudentMainLayoutFactory {
 			gridLayout.addComponent(age, 0, 1);
 			gridLayout.addComponent(gender, 1, 1);
 			
-			gridLayout.addComponent(university, 0, 2, 1, 2);
+			gridLayout.addComponent(universityName, 0, 2);
+			gridLayout.addComponent(universityCity, 1, 2);
+			gridLayout.addComponent(universityCountry, 0, 3);
 
-			gridLayout.addComponent(new HorizontalLayout(saveButton, clearButton), 0, 3);
+			gridLayout.addComponent(new HorizontalLayout(saveButton, clearButton), 0, 4);
+			
+			gridLayout.setWidth("100%");
 
 			return gridLayout;
 		}
@@ -146,7 +155,7 @@ public class AddStudentMainLayoutFactory {
 			lastName.setValue(null);
 			gender.setValue(null);
 			age.setValue(null);
-			university.setValue(null);
+			universityCity.setValue(null);
 		}
 		
 		private boolean isSaveOperationValid() {
@@ -156,7 +165,7 @@ public class AddStudentMainLayoutFactory {
 		public AddStudentMainLayout load() {
 
 			List<University> universities = showAllUniversitiesService.getAllUniversities();
-			university.addItems(universities);
+			//university.addItems(universities);
 			
 			return this;
 		}

@@ -18,7 +18,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @SpringUI(path=UniversMainUI.NAME)
-@Title("U n i v e r s")
+@Title("Screenwise")
 @Theme("valo")
 public class UniversMainUI extends UI {
 
@@ -48,17 +48,17 @@ public class UniversMainUI extends UI {
 		rootLayout.setMargin(true);
 		
 		Panel contentPanel = new Panel();
-		contentPanel.setWidth("75%");
+		contentPanel.setWidth("85%");
 		contentPanel.setHeight("100%");
 		
 		Panel logoPanel = new Panel();
-		logoPanel.setWidth("75%");
+		logoPanel.setWidth("85%");
 		logoPanel.setHeightUndefined();
 		
 		HorizontalLayout uiLayout = new HorizontalLayout();
 		uiLayout.setSizeFull();
 		uiLayout.setMargin(true);
-		
+
 		Component logo = universLogoLayoutFactory.createComponent();
 		Component menu = universMenuFactory.createComponent();
 		
