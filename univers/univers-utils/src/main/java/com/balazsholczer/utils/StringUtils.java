@@ -2,10 +2,10 @@ package com.balazsholczer.utils;
 
 public enum StringUtils {
 
-	MENU_STUDENT("STUDENTS"),
-	MENU_UNIVERSITY("UNIVERSITY"),
-	MENU_ADD_STUDENT("Add Student"),
-	MENU_REMOVE_STUDENT("Remove Student"),
+	MENU_STUDENT("PATIENTS"),
+	MENU_UNIVERSITY("AGENCY/CLINIC"),
+	MENU_ADD_STUDENT("Add Patient"),
+	MENU_REMOVE_STUDENT("Remove Patient"),
 	MENU_OPERATIONS("Operations"),
 	
 	;

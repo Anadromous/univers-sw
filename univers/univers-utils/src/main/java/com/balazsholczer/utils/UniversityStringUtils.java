@@ -7,7 +7,7 @@ public enum UniversityStringUtils {
 	UNIVERSITY_CITY("City"),
 	
 	UNIVERSITY_SAVE_SUCCESS_TITLE("SAVE"),
-	UNIVERSITY_SAVE_SUCCESS_DESCRIPTION("University saved successfully!")
+	UNIVERSITY_SAVE_SUCCESS_DESCRIPTION("Agency saved successfully!")
 	
 	;
 	

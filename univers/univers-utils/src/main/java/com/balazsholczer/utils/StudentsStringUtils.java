@@ -3,7 +3,7 @@ package com.balazsholczer.utils;
 public enum StudentsStringUtils {
 
 	MAIN_MENU("MAIN MENU"),
-	SHOW_ALL_STUDENTS("SHOW ALL STUDENTS"),
+	SHOW_ALL_STUDENTS("SHOW ALL PATIENTS"),
 	
 	FIRST_NAME("First name"),
 	LAST_NAME("Last name"),
@@ -11,7 +11,7 @@ public enum StudentsStringUtils {
 	AGE("Age"),
 	SAVE_BUTTON("Save"),
 	CLEAR_BUTTON("Clear"), 
-	UNIVERSITY("University");
+	UNIVERSITY("Agence/Site");
 	
 	private final String string;
 	
