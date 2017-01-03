@@ -46,7 +46,7 @@ public class AgencyLayoutFactory extends VerticalLayout implements View, AgencyS
 		addComponent(tabSheet);
 	}
 	
-	public void universitySaved() {
+	public void agencySaved() {
 		showAgenciesLayoutFactory.refreshTable();
 		statisticsAgencyLayoutFactory.refresh();
 	}
@@ -55,4 +55,5 @@ public class AgencyLayoutFactory extends VerticalLayout implements View, AgencyS
 		removeAllComponents();
 		addLayout();
 	}
+
 }

@@ -11,7 +11,7 @@ public class AgencyStatisticsServiceImpl implements AgencyStatisticsService {
 	@Autowired
 	private AgencyRepository universityRepository;
 	
-	public Integer getNumOfStudentsForUniversity(Integer universityId) {
-		return universityRepository.getNumPatientsForAgency(universityId);
+	public Integer getNumOfPatientsForAgency(Integer agencyId) {
+		return universityRepository.getNumPatientsForAgency(agencyId);
 	}
 }

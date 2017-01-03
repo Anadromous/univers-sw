@@ -1,4 +1,4 @@
-package com.balazsholczer.ui.students;
+package com.balazsholczer.ui.patients;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,16 +13,16 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 
-@SpringView(name=StudentLayoutFactory.NAME, ui=UniversMainUI.class)
-public class StudentLayoutFactory extends VerticalLayout implements View, StudentSavedListener {
+@SpringView(name=PatientLayoutFactory.NAME, ui=UniversMainUI.class)
+public class PatientLayoutFactory extends VerticalLayout implements View, PatientSavedListener {
 
 	public static final String NAME = "addpatient";
 
 	@Autowired
-	private AddStudentMainLayoutFactory mainLayoutFactory;
+	private AddPatientMainLayoutFactory mainLayoutFactory;
 	
 	@Autowired
-	private ShowAllStudentsLayoutFactory showStudentsLayoutFactory;
+	private ShowAllPatientsLayoutFactory showStudentsLayoutFactory;
 	
 	private TabSheet tabSheet;
 	

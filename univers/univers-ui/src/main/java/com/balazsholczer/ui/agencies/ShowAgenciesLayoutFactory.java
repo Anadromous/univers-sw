@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.balazsholczer.model.entity.University;
+import com.balazsholczer.model.entity.Agency;
 import com.balazsholczer.service.showallagencies.ShowAllAgenciesService;
 import com.balazsholczer.ui.commons.UIComponentBuilder;
 import com.vaadin.data.util.BeanItemContainer;
@@ -15,47 +15,47 @@ import com.vaadin.ui.VerticalLayout;
 @org.springframework.stereotype.Component
 public class ShowAgenciesLayoutFactory implements UIComponentBuilder {
 
-	private List<University> universities;
-	private BeanItemContainer<University> container;
+	private List<Agency> agencies;
+	private BeanItemContainer<Agency> container;
 
 	@Autowired
-	private ShowAllAgenciesService showUniversitiesService;
+	private ShowAllAgenciesService showAllAgenciesService;
 
-	private class ShowUniversityLayout extends VerticalLayout {
+	private class ShowAgenciesLayout extends VerticalLayout {
 
-		private Grid universityTable;
+		private Grid agencyTable;
 
-		public ShowUniversityLayout init() {
+		public ShowAgenciesLayout init() {
 
 			setMargin(true);
-			container = new BeanItemContainer<University>(University.class, universities);
+			container = new BeanItemContainer<Agency>(Agency.class, agencies);
 
-			universityTable = new Grid(container);
-			universityTable.setColumnOrder("universityName", "universityCountry", "universityCity");
-			universityTable.removeColumn("id");
-			universityTable.setImmediate(true);
+			agencyTable = new Grid(container);
+			agencyTable.setColumnOrder("agencyName", "street", "city");
+			agencyTable.removeColumn("id");
+			agencyTable.setImmediate(true);
 
 			return this;
 		}
 
-		public ShowUniversityLayout layout() {
-			addComponent(universityTable);
+		public ShowAgenciesLayout layout() {
+			addComponent(agencyTable);
 			return this;
 		}
 
-		public ShowUniversityLayout load() {
-			universities = showUniversitiesService.getAllUniversities();
+		public ShowAgenciesLayout load() {
+			agencies = showAllAgenciesService.getAllAgencies();
 			return this;
 		}
 	}
 	
 	public void refreshTable() {
-		universities = showUniversitiesService.getAllUniversities();
+		agencies = showAllAgenciesService.getAllAgencies();
 		container.removeAllItems();
-		container.addAll(universities);
+		container.addAll(agencies);
 	}
 
 	public Component createComponent() {
-		return new ShowUniversityLayout().load().init().layout();
+		return new ShowAgenciesLayout().load().init().layout();
 	}
 }

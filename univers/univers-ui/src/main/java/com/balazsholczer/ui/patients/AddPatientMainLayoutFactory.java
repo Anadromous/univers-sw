@@ -1,4 +1,4 @@
-package com.balazsholczer.ui.students;
+package com.balazsholczer.ui.patients;
 
 import java.util.List;
 
@@ -6,9 +6,10 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.balazsholczer.model.entity.Agency;
 import com.balazsholczer.model.entity.Student;
 import com.balazsholczer.model.entity.University;
-import com.balazsholczer.service.addstudent.AddStudentService;
+import com.balazsholczer.service.addpatient.AddPatientService;
 import com.balazsholczer.service.showallagencies.ShowAllAgenciesService;
 import com.balazsholczer.ui.commons.UniversMainUI;
 import com.balazsholczer.ui.form.PatientForm;
@@ -32,17 +33,17 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
 @org.springframework.stereotype.Component
-public class AddStudentMainLayoutFactory {
+public class AddPatientMainLayoutFactory {
 
-	private static final Logger log = LogManager.getLogger(AddStudentMainLayoutFactory.class);
+	private static final Logger log = LogManager.getLogger(AddPatientMainLayoutFactory.class);
 	
-	private class AddStudentMainLayout extends FormLayout implements Button.ClickListener {
+	private class AddPatientMainLayout extends FormLayout implements Button.ClickListener {
 
 		private TextField firstName;
 		private TextField lastName;
 		private TextField age;
 		private OptionGroup gender;
-		private ComboBox university;
+		private ComboBox agency;
 		private OptionGroup hasHealthIns;
 		
 		private Button saveButton;
@@ -52,13 +53,13 @@ public class AddStudentMainLayoutFactory {
 		private BeanFieldGroup<PatientForm> fieldGroup;
 		private PatientForm patient;
 		
-		private StudentSavedListener studentSavedLister;
+		private PatientSavedListener studentSavedLister;
 		
-		public AddStudentMainLayout(StudentSavedListener studentSavedLister) {
-			this.studentSavedLister = studentSavedLister;
+		public AddPatientMainLayout(PatientSavedListener patientSavedLister) {
+			this.studentSavedLister = patientSavedLister;
 		}
 
-		public AddStudentMainLayout init() {
+		public AddPatientMainLayout init() {
 
 			fieldGroup = new BeanFieldGroup<PatientForm>(PatientForm.class);
 			patient = new PatientForm();
@@ -75,8 +76,8 @@ public class AddStudentMainLayoutFactory {
 			saveButton = new Button(StudentsStringUtils.SAVE_BUTTON.getString());
 			clearButton = new Button(StudentsStringUtils.CLEAR_BUTTON.getString());
 			
-			university = new ComboBox(StudentsStringUtils.UNIVERSITY.getString());
-			university.setWidth("100%");
+			agency = new ComboBox(StudentsStringUtils.UNIVERSITY.getString());
+			agency.setWidth("100%");
 			
 			saveButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
 			clearButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
@@ -91,7 +92,7 @@ public class AddStudentMainLayoutFactory {
 			return this;
 		}
 
-		public AddStudentMainLayout bind() {
+		public AddPatientMainLayout bind() {
 			fieldGroup.bindMemberFields(this);
 			fieldGroup.setItemDataSource(patient);
 			return this;
@@ -110,7 +111,7 @@ public class AddStudentMainLayoutFactory {
 			gridLayout.addComponent(age, 0, 1);
 			gridLayout.addComponent(gender, 1, 1);
 			
-			gridLayout.addComponent(university, 0, 2, 1, 2);
+			gridLayout.addComponent(agency, 0, 2, 1, 2);
 			
 			gridLayout.addComponent(hasHealthIns, 0, 3, 1, 3);
 
@@ -145,7 +146,7 @@ public class AddStudentMainLayoutFactory {
 				return;
 			}	
 			
-			addStudentService.saveStudent(patient);
+			addPatientService.savePatient(patient);
 			studentSavedLister.studentSaved();
 			clearField();
 	
@@ -159,18 +160,18 @@ public class AddStudentMainLayoutFactory {
 			lastName.setValue(null);
 			gender.setValue(null);
 			age.setValue(null);
-			university.setValue(null);
+			agency.setValue(null);
 		}
 		
 		private boolean isSaveOperationValid() {
 			return true;//showAllUniversitiesService.getAllUniversities().size() != 0;
 		}
 
-		public AddStudentMainLayout load() {
+		public AddPatientMainLayout load() {
 
-			List<University> universities = showAllUniversitiesService.getAllUniversities();
-			log.debug("Getting clinics: "+universities.size());
-			university.addItems(universities);
+			List<Agency> agencies = showAllAgenciesService.getAllAgencies();
+			log.debug("Getting clinics: "+agencies.size());
+			agency.addItems(agencies);
 			
 			return this;
 		}
@@ -178,12 +179,12 @@ public class AddStudentMainLayoutFactory {
 	}
 	
 	@Autowired
-	private ShowAllAgenciesService showAllUniversitiesService;
+	private ShowAllAgenciesService showAllAgenciesService;
 	
 	@Autowired
-	private AddStudentService addStudentService;
+	private AddPatientService addPatientService;
 
-	public Component createComponent(StudentSavedListener studentSavedLister) {
-		return new AddStudentMainLayout(studentSavedLister).init().load().bind().layout();
+	public Component createComponent(PatientSavedListener studentSavedLister) {
+		return new AddPatientMainLayout(studentSavedLister).init().load().bind().layout();
 	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.balazsholczer.model.entity.University;
+import com.balazsholczer.model.entity.Agency;
 import com.balazsholczer.service.agencystatistics.AgencyStatisticsService;
 import com.balazsholczer.service.showallagencies.ShowAllAgenciesService;
 import com.balazsholczer.ui.commons.UIComponentBuilder;
@@ -16,29 +16,29 @@ import com.vaadin.ui.VerticalLayout;
 @org.springframework.stereotype.Component
 public class StatisticsAgencyLayoutFactory implements UIComponentBuilder {
 
-	private List<University> universities;
-	private StatisticsUniversityLayout statisticsLayout;
+	private List<Agency> agencies;
+	private StatisticsAgencyLayout statisticsLayout;
 	
 	@Autowired
-	private AgencyStatisticsService universityStatisticsService;
+	private AgencyStatisticsService agencyStatisticsService;
 	
 	@Autowired
-	private ShowAllAgenciesService showAllUniversitiesService;
+	private ShowAllAgenciesService showAllAgenciesService;
 	
-	private class StatisticsUniversityLayout extends VerticalLayout {
+	private class StatisticsAgencyLayout extends VerticalLayout {
 
-		public StatisticsUniversityLayout load() {
-			universities = showAllUniversitiesService.getAllUniversities();
+		public StatisticsAgencyLayout load() {
+			agencies = showAllAgenciesService.getAllAgencies();
 			return this;
 		}
 		
-		public StatisticsUniversityLayout layout() {
+		public StatisticsAgencyLayout layout() {
 			
 			setMargin(true);
 			
-			for(University university : universities) {
-				int numOfStudents = universityStatisticsService.getNumOfStudentsForUniversity(university.getId());
-				Label label = new Label("<p><b>"+university.getUniversityName()+"</b>"+"  -  "+numOfStudents+" student(s)"+"</p>", ContentMode.HTML);
+			for(Agency agency : agencies) {
+				int numOfPatients = agencyStatisticsService.getNumOfPatientsForAgency(agency.getId());
+				Label label = new Label("<p><b>"+agency.getAgencyName()+"</b>"+"  -  "+numOfPatients+" student(s)"+"</p>", ContentMode.HTML);
 				addComponent(label);
 			}
 			
@@ -56,7 +56,7 @@ public class StatisticsAgencyLayoutFactory implements UIComponentBuilder {
 	
 	public Component createComponent() {
 		
-		statisticsLayout = new StatisticsUniversityLayout();
+		statisticsLayout = new StatisticsAgencyLayout();
 		
 		return statisticsLayout.load().layout();
 	}	

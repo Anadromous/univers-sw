@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import com.balazsholczer.navigator.UniversNavigator;
-import com.balazsholczer.ui.students.StudentLayoutFactory;
+import com.balazsholczer.ui.patients.PatientLayoutFactory;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.server.VaadinRequest;
@@ -91,6 +91,6 @@ public class UniversMainUI extends UI {
 		UniversNavigator navigator = new UniversNavigator(this, changeTab);
 		applicationContext.getAutowireCapableBeanFactory().autowireBean(navigator);
 		navigator.addProvider(viewProvider);
-		navigator.navigateTo(StudentLayoutFactory.NAME);
+		navigator.navigateTo(PatientLayoutFactory.NAME);
 	}
 }
