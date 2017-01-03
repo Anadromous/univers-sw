@@ -1,7 +1,7 @@
 package com.balazsholczer.service.addstudent;
 
-import com.balazsholczer.model.entity.Student;
+import com.balazsholczer.ui.form.PatientForm;
 
 public interface AddStudentService {
-	public void saveStudent(Student studentDTO);
+	public void saveStudent(PatientForm form);
 }

@@ -46,6 +46,7 @@ public class UniversMainUI extends UI {
 		VerticalLayout rootLayout = new VerticalLayout();
 		rootLayout.setSizeFull();
 		rootLayout.setMargin(true);
+		rootLayout.setCaption("rootLayout");
 		
 		Panel contentPanel = new Panel();
 		contentPanel.setWidth("85%");
@@ -58,6 +59,7 @@ public class UniversMainUI extends UI {
 		HorizontalLayout uiLayout = new HorizontalLayout();
 		uiLayout.setSizeFull();
 		uiLayout.setMargin(true);
+		uiLayout.setCaption("Horizontal uiLayout");
 
 		Component logo = universLogoLayoutFactory.createComponent();
 		Component menu = universMenuFactory.createComponent();

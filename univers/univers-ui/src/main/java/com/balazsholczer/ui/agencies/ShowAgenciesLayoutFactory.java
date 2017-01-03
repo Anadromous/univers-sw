@@ -1,11 +1,11 @@
-package com.balazsholczer.ui.universities;
+package com.balazsholczer.ui.agencies;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.balazsholczer.model.entity.University;
-import com.balazsholczer.service.showalluniversities.ShowAllUniversitiesService;
+import com.balazsholczer.service.showallagencies.ShowAllAgenciesService;
 import com.balazsholczer.ui.commons.UIComponentBuilder;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.ui.Component;
@@ -13,13 +13,13 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.VerticalLayout;
 
 @org.springframework.stereotype.Component
-public class ShowUniversitiesLayoutFactory implements UIComponentBuilder {
+public class ShowAgenciesLayoutFactory implements UIComponentBuilder {
 
 	private List<University> universities;
 	private BeanItemContainer<University> container;
 
 	@Autowired
-	private ShowAllUniversitiesService showUniversitiesService;
+	private ShowAllAgenciesService showUniversitiesService;
 
 	private class ShowUniversityLayout extends VerticalLayout {
 

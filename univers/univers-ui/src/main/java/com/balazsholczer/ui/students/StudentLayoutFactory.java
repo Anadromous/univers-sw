@@ -1,6 +1,7 @@
 package com.balazsholczer.ui.students;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.balazsholczer.ui.commons.UniversMainUI;
 import com.balazsholczer.utils.StudentsStringUtils;
@@ -15,7 +16,7 @@ import com.vaadin.ui.VerticalLayout;
 @SpringView(name=StudentLayoutFactory.NAME, ui=UniversMainUI.class)
 public class StudentLayoutFactory extends VerticalLayout implements View, StudentSavedListener {
 
-	public static final String NAME = "addstudent";
+	public static final String NAME = "addpatient";
 
 	@Autowired
 	private AddStudentMainLayoutFactory mainLayoutFactory;

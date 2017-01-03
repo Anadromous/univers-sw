@@ -1,5 +1,7 @@
 package com.balazsholczer.model.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,94 +12,86 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "STUDENT")
 public class Student {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
 	private Integer id;
-
-	@NotNull(message = "Must specify first name!")
-	@Column(name = "first_name")
 	private String firstName;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "university_id")
-	@NotNull(message="University must be filled!")
-	private University university;
-
-	@NotNull(message = "Must specify last name!")
-	@Column(name = "last_name")
+	private Agency agency;
 	private String lastName;
-
-	@NotNull(message = "Must specify age!")
-	@Min(value = 0, message = "Can not be less than 0")
-	@Max(value = 100, message = "Can not be greater than 100")
-	@Column(name = "age")
-	private Integer age;
-
-	@NotNull(message = "Must specify gender!")
-	@Column(name = "gender")
+	private Date birthDate;
 	private String gender;
+	private String hasHealthIns;
 
 	public Student() {
 
 	}
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	public Integer getId() {
+		return id;
+	}
 
+	@Column(name = "first_name")
 	public String getFirstName() {
 		return firstName;
+	}
+	
+	@Column(name = "last_name")
+	public String getLastName() {
+		return lastName;
+	}
+
+	@Column(name = "gender")
+	public String getGender() {
+		return gender;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "agency_id")
+	public Agency getAgency() {
+		return agency;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-	public University getUniversity() {
-		return university;
+	public void setAgeny(Agency agency) {
+		this.agency = agency;
+	}
+	
+	/**
+	 * @return the hasHealthIns
+	 */
+	public String getHasHealthIns() {
+		return hasHealthIns;
 	}
 
-	public void setUniversity(University university) {
-		this.university = university;
+	/**
+	 * @param hasHealthIns the hasHealthIns to set
+	 */
+	public void setHasHealthIns(String hasHealthIns) {
+		this.hasHealthIns = hasHealthIns;
 	}
 
 	@Override
 	public String toString() {
-		return this.firstName + "-" + this.lastName + "-" + this.age;
+		return this.firstName + "-" + this.lastName + "-" + this.birthDate + "-" + this.hasHealthIns;
 	}
 }

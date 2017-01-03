@@ -1,5 +1,7 @@
 package com.balazsholczer.ui.commons;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.balazsholczer.navigator.UniversNavigator;
@@ -7,6 +9,7 @@ import com.balazsholczer.utils.StringUtils;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Tree;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -14,7 +17,9 @@ import com.vaadin.ui.VerticalLayout;
 @org.springframework.stereotype.Component
 public class UniversMenuFactory implements UIComponentBuilder {
 
-	private class UniversMenu extends VerticalLayout implements Property.ValueChangeListener {
+	private static final Logger log = LogManager.getLogger(UniversMenuFactory.class);
+	
+	private class UniversMenu extends FormLayout implements Property.ValueChangeListener {
 		
 		private Tree mainMenu;
 		
@@ -26,7 +31,7 @@ public class UniversMenuFactory implements UIComponentBuilder {
 		
 		public UniversMenu layout() {
 			
-			setWidth("100%");
+			setWidth("40%");
 			setHeightUndefined();
 			
 			mainMenu.addItem(StringUtils.MENU_STUDENT.getString());
@@ -70,6 +75,7 @@ public class UniversMenuFactory implements UIComponentBuilder {
 			}
 			
 			String path = selectedItemPath.toLowerCase().replaceAll("\\s+", "");
+			log.debug("path from menu: "+path);
 			UniversNavigator.navigate(path);
 		}
 		

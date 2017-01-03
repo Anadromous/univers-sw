@@ -11,6 +11,6 @@ import com.balazsholczer.model.entity.Student;
 @Repository
 public interface StudentRepository extends JpaRepository<Student,Integer> {
 
-	@Query("select s from Student s order by s.firstName")
+	@Query("select s from Student s order by s.lastName")
 	List<Student> getAllStudents();
 }
