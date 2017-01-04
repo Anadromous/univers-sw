@@ -19,7 +19,7 @@ public class PatientLayoutFactory extends VerticalLayout implements View, Patien
 	public static final String NAME = "addpatient";
 
 	@Autowired
-	private AddPatientMainLayoutFactory mainLayoutFactory;
+	private AddPatientMainLayoutFactory addPatientMainLayoutFactory;
 	
 	@Autowired
 	private ShowAllPatientsLayoutFactory showStudentsLayoutFactory;
@@ -33,7 +33,7 @@ public class PatientLayoutFactory extends VerticalLayout implements View, Patien
 		tabSheet = new TabSheet();
 		tabSheet.setWidth("100%");
 		
-		Component addStudentMainTab = mainLayoutFactory.createComponent(this);
+		Component addStudentMainTab = addPatientMainLayoutFactory.createComponent(this);
 	    Component showStudentsTab = showStudentsLayoutFactory.createComponent();
 	    
 	    tabSheet.addTab(addStudentMainTab, StudentsStringUtils.MAIN_MENU.getString());

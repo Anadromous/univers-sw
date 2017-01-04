@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.balazsholczer.model.entity.Patient;
-import com.balazsholczer.model.entity.Student;
 import com.balazsholczer.repository.patient.PatientRepository;
 
 @Service

@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "ENROLLMENT")
 public class Enrollment {
@@ -50,6 +52,7 @@ public class Enrollment {
 	 */
 	//@Type(type="date")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="enroll_date")
 	public Date getEnrollmentDate() {
 		return enrollmentDate;

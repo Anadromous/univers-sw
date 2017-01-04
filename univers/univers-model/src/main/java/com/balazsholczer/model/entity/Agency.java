@@ -1,5 +1,18 @@
 package com.balazsholczer.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "AGENCY")
 public class Agency {
 
 	private Integer id;
@@ -10,6 +23,7 @@ public class Agency {
 	private String zip;
 	private String zipExt;
 	private String phone;
+	private List<Patient> patients = new ArrayList<Patient>();
 	
 	public Agency() {
 
@@ -18,6 +32,9 @@ public class Agency {
 	/**
 	 * @return the id
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -25,6 +42,7 @@ public class Agency {
 	/**
 	 * @return the agencyName
 	 */
+	@Column(name = "agency_name")
 	public String getAgencyName() {
 		return agencyName;
 	}
@@ -32,6 +50,7 @@ public class Agency {
 	/**
 	 * @return the street
 	 */
+	@Column(name = "street")
 	public String getStreet() {
 		return street;
 	}
@@ -39,6 +58,7 @@ public class Agency {
 	/**
 	 * @return the city
 	 */
+	@Column(name = "city")
 	public String getCity() {
 		return city;
 	}
@@ -46,6 +66,7 @@ public class Agency {
 	/**
 	 * @return the state
 	 */
+	@Column(name = "state")
 	public String getState() {
 		return state;
 	}
@@ -53,6 +74,7 @@ public class Agency {
 	/**
 	 * @return the zip
 	 */
+	@Column(name = "zip")
 	public String getZip() {
 		return zip;
 	}
@@ -60,6 +82,7 @@ public class Agency {
 	/**
 	 * @return the zipExt
 	 */
+	@Column(name = "zip_ext")
 	public String getZipExt() {
 		return zipExt;
 	}
@@ -67,8 +90,24 @@ public class Agency {
 	/**
 	 * @return the phone
 	 */
+	@Column(name = "phone")
 	public String getPhone() {
 		return phone;
+	}
+
+	/**
+	 * @return the patients
+	 */
+	@OneToMany(mappedBy="agency")
+	public List<Patient> getPatients() {
+		return patients;
+	}
+
+	/**
+	 * @param patients the patients to set
+	 */
+	public void setPatients(List<Patient> patients) {
+		this.patients = patients;
 	}
 
 	/**

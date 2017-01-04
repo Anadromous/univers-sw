@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "PATIENT")
 public class Patient {
@@ -169,21 +171,18 @@ public class Patient {
 	}
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "birth_date")
 	public Date getBirthDate() {
 		return birthDate;
 	}
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "agency_id")
-	//NotNull(message="Agency must be filled!")
 	public Agency getAgency() {
 		return agency;
 	}
 	
-	
-	/*@Cascade({ CascadeType.SAVE_UPDATE })
-	@JoinColumn(name = "enrollment_id")*/
 	@OneToMany(mappedBy="patient")
 	public List<Enrollment> getEnrollments() {
 		return enrollments;
@@ -266,7 +265,7 @@ public class Patient {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	
 	public void setEnrollments(List<Enrollment> enrollments) {
 		this.enrollments = enrollments;
 	}

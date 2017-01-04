@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.balazsholczer.model.entity.Patient;
-import com.balazsholczer.model.entity.Student;
 import com.balazsholczer.service.removepatient.RemovePatientService;
 import com.balazsholczer.service.showallpatients.ShowAllPatientsService;
 import com.balazsholczer.ui.commons.UniversMainUI;
@@ -16,13 +15,13 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.MultiSelectionModel;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
-import com.vaadin.ui.themes.ValoTheme;
-import com.vaadin.ui.Grid;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 
 @SpringView(name=RemovePatientLayoutFactory.NAME, ui=UniversMainUI.class)
 public class RemovePatientLayoutFactory extends VerticalLayout implements View, Button.ClickListener {
