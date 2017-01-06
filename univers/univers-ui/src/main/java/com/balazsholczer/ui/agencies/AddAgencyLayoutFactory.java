@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.balazsholczer.model.entity.Agency;
 import com.balazsholczer.service.addagency.AddAgencyService;
 import com.balazsholczer.utils.NotificationMessages;
-import com.balazsholczer.utils.StudentsStringUtils;
+import com.balazsholczer.utils.PatientStringUtils;
 import com.balazsholczer.utils.UniversityStringUtils;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
@@ -47,7 +47,7 @@ public class AddAgencyLayoutFactory {
 			agencyCountry = new TextField(UniversityStringUtils.UNIVERSITY_COUNTRY.getString());
 			agencyCity = new TextField(UniversityStringUtils.UNIVERSITY_CITY.getString());
 
-			saveButton = new Button(StudentsStringUtils.SAVE_BUTTON.getString(), this);
+			saveButton = new Button(PatientStringUtils.SAVE_BUTTON.getString(), this);
 			saveButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
 
 			agencyName.setNullRepresentation("");

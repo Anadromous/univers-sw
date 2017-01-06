@@ -1,6 +1,6 @@
 package com.balazsholczer.utils;
 
-public enum StudentsStringUtils {
+public enum PatientStringUtils {
 
 	MAIN_MENU("MAIN MENU"),
 	SHOW_ALL_STUDENTS("SHOW ALL PATIENTS"),
@@ -8,14 +8,14 @@ public enum StudentsStringUtils {
 	FIRST_NAME("First name"),
 	LAST_NAME("Last name"),
 	GENDER("Gender"),
-	AGE("Age"),
+	AGE("BirthDate"),
 	SAVE_BUTTON("Save"),
 	CLEAR_BUTTON("Clear"), 
 	UNIVERSITY("Agence/Site");
 	
 	private final String string;
 	
-	private StudentsStringUtils(String string) {
+	private PatientStringUtils(String string) {
 		this.string = string;
 	}
 	

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.balazsholczer.ui.commons.UniversMainUI;
-import com.balazsholczer.utils.StudentsStringUtils;
+import com.balazsholczer.utils.PatientStringUtils;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
@@ -22,7 +22,7 @@ public class PatientLayoutFactory extends VerticalLayout implements View, Patien
 	private AddPatientMainLayoutFactory addPatientMainLayoutFactory;
 	
 	@Autowired
-	private ShowAllPatientsLayoutFactory showStudentsLayoutFactory;
+	private ShowAllPatientsLayoutFactory showAllPatientsLayoutFactory;
 	
 	private TabSheet tabSheet;
 	
@@ -34,17 +34,17 @@ public class PatientLayoutFactory extends VerticalLayout implements View, Patien
 		tabSheet.setWidth("100%");
 		
 		Component addStudentMainTab = addPatientMainLayoutFactory.createComponent(this);
-	    Component showStudentsTab = showStudentsLayoutFactory.createComponent();
+	    Component showStudentsTab = showAllPatientsLayoutFactory.createComponent();
 	    
-	    tabSheet.addTab(addStudentMainTab, StudentsStringUtils.MAIN_MENU.getString());
-	    tabSheet.addTab(showStudentsTab, StudentsStringUtils.SHOW_ALL_STUDENTS.getString());
+	    tabSheet.addTab(addStudentMainTab, PatientStringUtils.MAIN_MENU.getString());
+	    tabSheet.addTab(showStudentsTab, PatientStringUtils.SHOW_ALL_STUDENTS.getString());
 	    
 	    addComponent(tabSheet);
 		
 	}
 	
 	public void studentSaved() {
-		showStudentsLayoutFactory.refreshTable();
+		showAllPatientsLayoutFactory.refreshTable();
 	}
 	
 	public void enter(ViewChangeEvent event) {

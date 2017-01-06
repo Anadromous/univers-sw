@@ -12,7 +12,7 @@ import com.balazsholczer.service.showallagencies.ShowAllAgenciesService;
 import com.balazsholczer.ui.form.PatientForm;
 import com.balazsholczer.utils.Gender;
 import com.balazsholczer.utils.NotificationMessages;
-import com.balazsholczer.utils.StudentsStringUtils;
+import com.balazsholczer.utils.PatientStringUtils;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
 import com.vaadin.ui.Button;
@@ -61,19 +61,19 @@ public class AddPatientMainLayoutFactory {
 			fieldGroup = new BeanFieldGroup<PatientForm>(PatientForm.class);
 			patient = new PatientForm();
 
-			firstName = new TextField("First Nom");
-			lastName = new TextField(StudentsStringUtils.LAST_NAME.getString());
-			birthDate = new DateField(StudentsStringUtils.AGE.getString());
-			gender = new OptionGroup(StudentsStringUtils.GENDER.getString());
+			firstName = new TextField(PatientStringUtils.LAST_NAME.getString());
+			lastName = new TextField(PatientStringUtils.LAST_NAME.getString());
+			birthDate = new DateField(PatientStringUtils.AGE.getString());
+			gender = new OptionGroup(PatientStringUtils.GENDER.getString());
 			gender.addItems(Gender.MALE.getString(),Gender.FEMALE.getString());
 			hasHealthIns = new OptionGroup("Do you have health insurance or Medicaid?");
-			hasHealthIns.setMultiSelect(true);
+			hasHealthIns.setMultiSelect(false);
 			hasHealthIns.addItems("Yes", "Yes, but not enough to cover my needs", "No");
 
-			saveButton = new Button(StudentsStringUtils.SAVE_BUTTON.getString());
-			clearButton = new Button(StudentsStringUtils.CLEAR_BUTTON.getString());
+			saveButton = new Button(PatientStringUtils.SAVE_BUTTON.getString());
+			clearButton = new Button(PatientStringUtils.CLEAR_BUTTON.getString());
 			
-			agency = new ComboBox(StudentsStringUtils.UNIVERSITY.getString());
+			agency = new ComboBox(PatientStringUtils.UNIVERSITY.getString());
 			agency.setWidth("100%");
 			
 			saveButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
