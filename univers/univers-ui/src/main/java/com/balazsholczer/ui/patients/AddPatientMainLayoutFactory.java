@@ -15,14 +15,17 @@ import com.balazsholczer.utils.NotificationMessages;
 import com.balazsholczer.utils.PatientStringUtils;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.OptionGroup;
@@ -38,7 +41,10 @@ public class AddPatientMainLayoutFactory {
 
 		private TextField firstName;
 		private TextField lastName;
+		private TextField patientId;
+		private DateField enrollmentDate;
 		private DateField birthDate;
+		private CheckBox homeLess;
 		private OptionGroup gender;
 		private ComboBox agency;
 		private OptionGroup hasHealthIns;
@@ -61,15 +67,18 @@ public class AddPatientMainLayoutFactory {
 			fieldGroup = new BeanFieldGroup<PatientForm>(PatientForm.class);
 			patient = new PatientForm();
 
-			firstName = new TextField(PatientStringUtils.LAST_NAME.getString());
+			firstName = new TextField(PatientStringUtils.FIRST_NAME.getString());
 			lastName = new TextField(PatientStringUtils.LAST_NAME.getString());
 			birthDate = new DateField(PatientStringUtils.AGE.getString());
+			homeLess = new CheckBox("Homeless or unstable housing? (If so, check box and only write ZIP code and county below)");
+			enrollmentDate = new DateField("Enrollment Date");
+			patientId = new TextField("Patient ID");
 			gender = new OptionGroup(PatientStringUtils.GENDER.getString());
+			gender.addStyleName("horizontal");
 			gender.addItems(Gender.MALE.getString(),Gender.FEMALE.getString());
 			hasHealthIns = new OptionGroup("Do you have health insurance or Medicaid?");
 			hasHealthIns.setMultiSelect(false);
 			hasHealthIns.addItems("Yes", "Yes, but not enough to cover my needs", "No");
-
 			saveButton = new Button(PatientStringUtils.SAVE_BUTTON.getString());
 			clearButton = new Button(PatientStringUtils.CLEAR_BUTTON.getString());
 			
@@ -97,21 +106,49 @@ public class AddPatientMainLayoutFactory {
 		public Component layout() {
 
 			setMargin(true);
-			GridLayout gridLayout = new GridLayout(2, 5);
+			GridLayout gridLayout = new GridLayout(4, 6);
+			gridLayout.addStyleName("v-panel-content");
 			gridLayout.setSizeUndefined();
 			gridLayout.setSpacing(true);
 
-			gridLayout.addComponent(firstName, 0, 0);
-			gridLayout.addComponent(lastName, 1, 0);
-
-			gridLayout.addComponent(birthDate, 0, 1);
-			gridLayout.addComponent(gender, 1, 1);
-			
+			gridLayout.addComponent(new Image("../../images/form_header.png"), 0, 0, 1, 0);
+			//row 1
+			gridLayout.addComponent(firstName, 0, 1);
+			gridLayout.addComponent(lastName, 1, 1);
+			gridLayout.addComponent(patientId, 2, 1);
+			gridLayout.addComponent(birthDate, 3, 1);
+			//row2
 			gridLayout.addComponent(agency, 0, 2, 1, 2);
-			
-			gridLayout.addComponent(hasHealthIns, 0, 3, 1, 3);
+			gridLayout.addComponent(enrollmentDate, 2, 2, 3, 2);
+			//row3
+			gridLayout.addComponent(homeLess, 0, 3, 3, 3);
+			//row4
+			gridLayout.addComponent(gender, 0, 4);
+			gridLayout.addComponent(hasHealthIns, 1, 4, 2, 4);
 
-			gridLayout.addComponent(new HorizontalLayout(saveButton, clearButton), 0, 4);
+			gridLayout.addComponent(new HorizontalLayout(saveButton, clearButton), 0, 5);
+
+			return gridLayout;
+		}
+		
+		public Component layoutForm() {
+
+			FormLayout gridLayout = new FormLayout();
+			setMargin(true);
+			gridLayout.setSizeUndefined();
+			gridLayout.setSpacing(true);
+
+			gridLayout.addComponent(firstName);
+			gridLayout.addComponent(lastName);
+
+			gridLayout.addComponent(birthDate);
+			gridLayout.addComponent(gender);
+			
+			gridLayout.addComponent(agency);
+			
+			gridLayout.addComponent(hasHealthIns);
+
+			gridLayout.addComponent(new HorizontalLayout(saveButton, clearButton));
 
 			return gridLayout;
 		}

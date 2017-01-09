@@ -32,7 +32,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-expression/4.3.1.RELEASE/spring-expression-4.3.1.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-expression/4.3.1.RELEASE/spring-expression-4.3.1.RELEASE-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/vaadin/vaadin-spring/1.0.0/vaadin-spring-1.0.0.jar" sourcepath="M2_REPO/com/vaadin/vaadin-spring/1.0.0/vaadin-spring-1.0.0-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/4.1.6.RELEASE/spring-web-4.1.6.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-web/4.1.6.RELEASE/spring-web-4.1.6.RELEASE-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/vaadin/vaadin-server/7.4.4/vaadin-server-7.4.4.jar" sourcepath="M2_REPO/com/vaadin/vaadin-server/7.4.4/vaadin-server-7.4.4-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/vaadin/vaadin-server/7.4.4/vaadin-server-7.4.4.jar" sourcepath="C:/devtools/.m2/repository/com/vaadin/vaadin-server/7.4.4/vaadin-server-7.4.4-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/vaadin/vaadin-sass-compiler/0.9.12/vaadin-sass-compiler-0.9.12.jar" sourcepath="M2_REPO/com/vaadin/vaadin-sass-compiler/0.9.12/vaadin-sass-compiler-0.9.12-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/w3c/css/sac/1.3/sac-1.3.jar" sourcepath="M2_REPO/org/w3c/css/sac/1.3/sac-1.3-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/vaadin/external/flute/flute/1.3.0.gg2/flute-1.3.0.gg2.jar" sourcepath="M2_REPO/com/vaadin/external/flute/flute/1.3.0.gg2/flute-1.3.0.gg2-sources.jar"/>

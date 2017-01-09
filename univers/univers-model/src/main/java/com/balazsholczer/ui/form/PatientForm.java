@@ -19,6 +19,7 @@ public class PatientForm {
 	private String middleName;
 	private String otherFirstName;
 	private String otherLastName;
+	private String patientId;
 	private Boolean homeLess;
 	private String street;
 	private String city;
@@ -193,6 +194,20 @@ public class PatientForm {
 	 */
 	public Agency getAgency() {
 		return agency;
+	}
+
+	/**
+	 * @return the patientId
+	 */
+	public String getPatientId() {
+		return patientId;
+	}
+
+	/**
+	 * @param patientId the patientId to set
+	 */
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
 	}
 
 	/**

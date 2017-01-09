@@ -46,20 +46,20 @@ public class UniversMainUI extends UI {
 		VerticalLayout rootLayout = new VerticalLayout();
 		rootLayout.setSizeFull();
 		rootLayout.setMargin(true);
-		rootLayout.setCaption("rootLayout");
 		
 		Panel contentPanel = new Panel();
-		contentPanel.setWidth("85%");
+		contentPanel.setWidth("95%");
 		contentPanel.setHeight("100%");
 		
 		Panel logoPanel = new Panel();
-		logoPanel.setWidth("85%");
+		logoPanel.addStyleName("v-panel-content");
+		logoPanel.setWidth("95%");
 		logoPanel.setHeightUndefined();
 		
 		HorizontalLayout uiLayout = new HorizontalLayout();
 		uiLayout.setSizeFull();
-		uiLayout.setMargin(true);
-		uiLayout.setCaption("Horizontal uiLayout");
+		uiLayout.setMargin(false);
+		uiLayout.addStyleName("v-panel-content");
 
 		Component logo = universLogoLayoutFactory.createComponent();
 		Component menu = universMenuFactory.createComponent();
@@ -68,10 +68,10 @@ public class UniversMainUI extends UI {
 		uiLayout.addComponent(changeTab);
 		
 		uiLayout.setComponentAlignment(changeTab, Alignment.TOP_CENTER);
-		uiLayout.setComponentAlignment(menu, Alignment.TOP_CENTER);
+		uiLayout.setComponentAlignment(menu, Alignment.TOP_LEFT);
 		
 		uiLayout.setExpandRatio(menu, 1);
-		uiLayout.setExpandRatio(changeTab, 2);
+		uiLayout.setExpandRatio(changeTab, 4);
 		
 		logoPanel.setContent(logo);
 		contentPanel.setContent(uiLayout);

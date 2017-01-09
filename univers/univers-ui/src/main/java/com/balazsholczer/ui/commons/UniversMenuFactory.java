@@ -8,6 +8,7 @@ import com.balazsholczer.navigator.UniversNavigator;
 import com.balazsholczer.utils.StringUtils;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Tree;
@@ -25,13 +26,14 @@ public class UniversMenuFactory implements UIComponentBuilder {
 		
 		public UniversMenu init() {
 			mainMenu = new Tree();
+			mainMenu.addStyleName("v-menubar");		
 			mainMenu.addValueChangeListener(this);
 			return this;
 		}
 		
 		public UniversMenu layout() {
 			
-			setWidth("40%");
+			setWidth("20%");
 			setHeightUndefined();
 			
 			mainMenu.addItem(StringUtils.MENU_STUDENT.getString());

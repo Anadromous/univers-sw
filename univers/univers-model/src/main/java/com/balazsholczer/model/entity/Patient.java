@@ -28,6 +28,7 @@ public class Patient {
 	private String middleName;
 	private String otherFirstName;
 	private String otherLastName;
+	private String patientId;
 	private Boolean homeLess;
 	private String street;
 	private String city;
@@ -103,6 +104,14 @@ public class Patient {
 	@Column(name = "other_last_name")
 	public String getOtherLastName() {
 		return otherLastName;
+	}
+	
+	/**
+	 * @return the patientId
+	 */
+	@Column(name="patient_id", length=12)
+	public String getPatientId() {
+		return patientId;
 	}
 
 	/**
@@ -210,6 +219,13 @@ public class Patient {
 		this.birthDate = birthDate;
 	}
 	
+	/**
+	 * @param patientId the patientId to set
+	 */
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
+	}
+
 	/**
 	 * @param homeLess the homeLess to set
 	 */
