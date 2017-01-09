@@ -26,7 +26,6 @@ public class UniversMenuFactory implements UIComponentBuilder {
 		
 		public UniversMenu init() {
 			mainMenu = new Tree();
-			mainMenu.addStyleName("v-menubar");		
 			mainMenu.addValueChangeListener(this);
 			return this;
 		}

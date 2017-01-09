@@ -1,8 +1,6 @@
 package com.balazsholczer.ui.commons;
 
-import com.google.web.bindery.requestfactory.shared.Service;
 import com.vaadin.server.ThemeResource;
-import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Embedded;

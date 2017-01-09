@@ -107,11 +107,10 @@ public class AddPatientMainLayoutFactory {
 
 			setMargin(true);
 			GridLayout gridLayout = new GridLayout(4, 6);
-			gridLayout.addStyleName("v-panel-content");
 			gridLayout.setSizeUndefined();
 			gridLayout.setSpacing(true);
 
-			gridLayout.addComponent(new Image("../../images/form_header.png"), 0, 0, 1, 0);
+			gridLayout.addComponent(new Image("../../images/form_header.PNG"), 0, 0, 1, 0);
 			//row 1
 			gridLayout.addComponent(firstName, 0, 1);
 			gridLayout.addComponent(lastName, 1, 1);
