@@ -22,6 +22,7 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.DateField;
+import com.vaadin.ui.Embedded;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -66,6 +67,7 @@ public class AddPatientMainLayoutFactory {
 
 			fieldGroup = new BeanFieldGroup<PatientForm>(PatientForm.class);
 			patient = new PatientForm();
+			
 
 			firstName = new TextField(PatientStringUtils.FIRST_NAME.getString());
 			lastName = new TextField(PatientStringUtils.LAST_NAME.getString());
@@ -105,12 +107,14 @@ public class AddPatientMainLayoutFactory {
 
 		public Component layout() {
 
+			final Embedded header = new Embedded();
 			setMargin(true);
 			GridLayout gridLayout = new GridLayout(4, 6);
 			gridLayout.setSizeUndefined();
 			gridLayout.setSpacing(true);
-
-			gridLayout.addComponent(new Image("../../images/form_header.PNG"), 0, 0, 1, 0);
+			header.setSource(new ThemeResource("../../images/form_header.PNG"));
+			header.setSizeFull();
+			gridLayout.addComponent(new HorizontalLayout(header), 0, 0, 3, 0);
 			//row 1
 			gridLayout.addComponent(firstName, 0, 1);
 			gridLayout.addComponent(lastName, 1, 1);

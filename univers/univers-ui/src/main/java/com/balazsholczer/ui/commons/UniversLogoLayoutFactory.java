@@ -15,9 +15,8 @@ public class UniversLogoLayoutFactory implements UIComponentBuilder {
 		
 		public LogoLayout init() {
 			logo = new Embedded();
-			logo.setSource(new ThemeResource("../../images/universe_2.png"));
-			logo.setWidth("398px");
-			logo.setHeight("241px");
+			logo.setSource(new ThemeResource("../../images/Screenwise.PNG"));
+			logo.setSizeFull();
 			return this;
 		}
 		
