@@ -22,6 +22,7 @@ public class PatientForm {
 	private String patientId;
 	private Boolean homeLess;
 	private String street;
+	private String aptNumber;
 	private String city;
 	private String state;
 	private String zip;

@@ -1,12 +1,17 @@
 package com.balazsholczer.ui.patients;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.print.attribute.standard.MediaSize.Other;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.balazsholczer.model.entity.Agency;
+import com.balazsholczer.model.entity.Enrollment;
 import com.balazsholczer.service.addpatient.AddPatientService;
 import com.balazsholczer.service.showallagencies.ShowAllAgenciesService;
 import com.balazsholczer.ui.form.PatientForm;
@@ -42,12 +47,23 @@ public class AddPatientMainLayoutFactory {
 
 		private TextField firstName;
 		private TextField lastName;
-		private TextField patientId;
-		private DateField enrollmentDate;
+		private TextField middleName;
+		private TextField otherFirstName;
+		private TextField otherLastName;
+		private TextField patientId;		
 		private DateField birthDate;
 		private CheckBox homeLess;
+		private TextField street;
+		private TextField aptNumber;
+		private TextField city;
+		private ComboBox state;
+		private TextField zip;
+		private TextField phone;
+		private ComboBox county;
 		private OptionGroup gender;
 		private ComboBox agency;
+		//enrollment
+		private DateField enrollmentDate;
 		private OptionGroup hasHealthIns;
 		
 		private Button saveButton;
@@ -71,6 +87,21 @@ public class AddPatientMainLayoutFactory {
 
 			firstName = new TextField(PatientStringUtils.FIRST_NAME.getString());
 			lastName = new TextField(PatientStringUtils.LAST_NAME.getString());
+			middleName = new TextField("Middle");
+			otherFirstName = new TextField("Other First Name");
+			otherLastName = new TextField("Other Last Name");
+			street = new TextField("Street");
+			aptNumber = new TextField("Apt.#");
+			city = new TextField("City");
+			state = new ComboBox("State");
+			state.addItem("OR");
+			state.addItem("WA");
+			state.setValue("OR");
+			zip = new TextField("Zip");
+			county = new ComboBox("County");
+			county.addItem("Multnomah");
+			county.addItem("Washington");
+			phone = new TextField("Phone");
 			birthDate = new DateField(PatientStringUtils.AGE.getString());
 			homeLess = new CheckBox("Homeless or unstable housing? (If so, check box and only write ZIP code and county below)");
 			enrollmentDate = new DateField("Enrollment Date");
@@ -95,7 +126,14 @@ public class AddPatientMainLayoutFactory {
 			
 			firstName.setNullRepresentation("");
 			lastName.setNullRepresentation("");
-
+			street.setNullRepresentation("");
+			city.setNullRepresentation("");
+			phone.setNullRepresentation("");
+			zip.setNullRepresentation("");
+			patientId.setNullRepresentation("");
+			otherFirstName.setNullRepresentation("");
+			otherLastName.setNullRepresentation("");
+			
 			return this;
 		}
 
@@ -109,27 +147,40 @@ public class AddPatientMainLayoutFactory {
 
 			final Embedded header = new Embedded();
 			setMargin(true);
-			GridLayout gridLayout = new GridLayout(4, 6);
+			GridLayout gridLayout = new GridLayout(5, 9);
 			gridLayout.setSizeUndefined();
 			gridLayout.setSpacing(true);
 			header.setSource(new ThemeResource("../../images/form_header.PNG"));
 			header.setSizeFull();
-			gridLayout.addComponent(new HorizontalLayout(header), 0, 0, 3, 0);
+			gridLayout.addComponent(new HorizontalLayout(header), 0, 0, 4, 0);
 			//row 1
 			gridLayout.addComponent(firstName, 0, 1);
 			gridLayout.addComponent(lastName, 1, 1);
-			gridLayout.addComponent(patientId, 2, 1);
+			gridLayout.addComponent(middleName, 2, 1);
 			gridLayout.addComponent(birthDate, 3, 1);
 			//row2
 			gridLayout.addComponent(agency, 0, 2, 1, 2);
-			gridLayout.addComponent(enrollmentDate, 2, 2, 3, 2);
+			gridLayout.addComponent(patientId, 2,2);
+			gridLayout.addComponent(enrollmentDate, 3, 2);
 			//row3
 			gridLayout.addComponent(homeLess, 0, 3, 3, 3);
 			//row4
-			gridLayout.addComponent(gender, 0, 4);
-			gridLayout.addComponent(hasHealthIns, 1, 4, 2, 4);
+			gridLayout.addComponent(street, 0,4,2,4);
+			gridLayout.addComponent(aptNumber, 3,4);
+			//row5
+			gridLayout.addComponent(city,0,5);
+			gridLayout.addComponent(state,1,5);
+			gridLayout.addComponent(zip,2,5);
+			gridLayout.addComponent(county,3,5);
+			//row6
+			gridLayout.addComponent(phone,0,6);
+			gridLayout.addComponent(otherFirstName,1,6);
+			gridLayout.addComponent(otherLastName, 2, 6);
+			//row7
+			gridLayout.addComponent(gender, 0, 7);
+			gridLayout.addComponent(hasHealthIns, 1, 7, 2, 7);
 
-			gridLayout.addComponent(new HorizontalLayout(saveButton, clearButton), 0, 5);
+			gridLayout.addComponent(new HorizontalLayout(saveButton, clearButton), 0, 8);
 
 			return gridLayout;
 		}

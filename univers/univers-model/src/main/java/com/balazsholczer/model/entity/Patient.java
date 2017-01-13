@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ public class Patient {
 	private Boolean homeLess;
 	private String street;
 	private String city;
+	private String aptNumber;
 	private String state;
 	private String zip;
 	private String zipExt;
@@ -140,6 +142,14 @@ public class Patient {
 	}
 
 	/**
+	 * @return the aptNumber
+	 */
+	@Column(name="apt_number")
+	public String getAptNumber() {
+		return aptNumber;
+	}
+
+	/**
 	 * @return the state
 	 */
 	@Column(name="state")
@@ -192,7 +202,8 @@ public class Patient {
 		return agency;
 	}
 	
-	@OneToMany(mappedBy="patient")
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="pt_id", nullable=false)
 	public List<Enrollment> getEnrollments() {
 		return enrollments;
 	}
@@ -245,6 +256,13 @@ public class Patient {
 	 */
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	/**
+	 * @param aptNumber the aptNumber to set
+	 */
+	public void setAptNumber(String aptNumber) {
+		this.aptNumber = aptNumber;
 	}
 
 	/**
