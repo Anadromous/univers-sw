@@ -101,7 +101,7 @@ public class Agency {
 	 * @return the patients
 	 */
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="agency", nullable=false)
+	@JoinColumn(name="agency_id", nullable=false)
 	public List<Patient> getPatients() {
 		return patients;
 	}

@@ -19,29 +19,7 @@ public class AddPatientServiceImpl implements AddPatientService {
 	private PatientRepository patientRepository;
 	
 	public void savePatient(PatientForm patientDTO) {
-//		//*
-//		private Integer id;
-//		private String firstName;
-//		private String lastName;
-//		private String middleName;
-//		private String otherFirstName;
-//		private String otherLastName;
-//		private String patientId;
-//		private Boolean homeLess;
-//		private String street;
-//		private String city;
-//		private String state;
-//		private String zip;
-//		private String zipExt;
-//		private String county;
-//		private String phone;
-//		private Date birthDate;
-//		private String gender;
-//		private Agency agency;
-//		private List<Enrollment> enrollments = new ArrayList<Enrollment>();
-		//enrollmentDate
-		//hasHealthIns
-//		*//
+
 		Patient patient = new Patient();
 		patient.setFirstName(patientDTO.getFirstName());
 		patient.setLastName(patientDTO.getLastName());

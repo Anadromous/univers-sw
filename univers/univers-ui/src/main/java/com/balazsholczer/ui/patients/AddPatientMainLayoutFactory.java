@@ -1,17 +1,12 @@
 package com.balazsholczer.ui.patients;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import javax.print.attribute.standard.MediaSize.Other;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.balazsholczer.model.entity.Agency;
-import com.balazsholczer.model.entity.Enrollment;
 import com.balazsholczer.service.addpatient.AddPatientService;
 import com.balazsholczer.service.showallagencies.ShowAllAgenciesService;
 import com.balazsholczer.ui.form.PatientForm;
@@ -31,7 +26,6 @@ import com.vaadin.ui.Embedded;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.OptionGroup;
