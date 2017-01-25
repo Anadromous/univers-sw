@@ -5,6 +5,8 @@
   <projects>
     <project>univers-utils</project>
     <project>univers-model</project>
+    <project>univers-service</project>
+    <project>univers-repository</project>
   </projects>
   <buildSpec>
     <buildCommand>

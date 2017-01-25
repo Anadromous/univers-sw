@@ -111,7 +111,7 @@ public class Patient {
 	/**
 	 * @return the patientId
 	 */
-	@Column(name="patient_id", length=12)
+	@Column(name="patient_clinic_id", length=12)
 	public String getPatientId() {
 		return patientId;
 	}
@@ -197,13 +197,12 @@ public class Patient {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "agency_id")
+	@JoinColumn(name="agency_id")
 	public Agency getAgency() {
 		return agency;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="pt_id", nullable=false)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="patient")
 	public List<Enrollment> getEnrollments() {
 		return enrollments;
 	}

@@ -1,4 +1,4 @@
-package com.balazsholczer.service;
+package com.balazsholczer.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,23 +9,26 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+	import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.balazsholczer.model.entity.Agency;
 import com.balazsholczer.model.entity.Enrollment;
 import com.balazsholczer.model.entity.Patient;
-import com.balazsholczer.repository.patient.PatientRepository;
+import com.balazsholczer.repository.patient.PatientRepository; 
+import com.balazsholczer.launcher.SpringBootApplication;
 
 @RunWith( SpringJUnit4ClassRunner.class )
-//@ContextConfiguration(loader = AnnotationConfigContextLoader.class)
+@DataJpaTest
+@ContextConfiguration
 //@WebAppConfiguration
-@SpringBootTest(classes =  SpringBootApplication.class)
+@SpringBootTest(classes = SpringBootApplication.class)
 //@ComponentScan({"com.balazsholczer"})
 //@EnableJpaRepositories({"com.balazsholczer"})
 //@EntityScan({"com.balazsholczer"})
-public class PatientTest {
+public class PatientDAOTest {
 
 	private final Logger log = LogManager.getLogger(getClass());
 	
@@ -59,7 +62,7 @@ public class PatientTest {
 		e.setHasHealthIns("Yes");
 		patient.addEnrollment(e);
 		log.debug("Patient: "+patient.toString());
-		//patientRepository.save(patient);
+		patientRepository.save(patient);
 		//Patient patients = patientRepository.findByLastName("Smith");
 		//String last = patients.getLastName();
 		//log.debug("Last name: "+last);

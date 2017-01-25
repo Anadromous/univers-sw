@@ -13,4 +13,5 @@ public interface PatientRepository extends JpaRepository<Patient,Integer> {
 
 	@Query("select s from Patient s order by s.lastName")
 	List<Patient> getAllPatients();
+	//Patient savePatient(Patient patient);
 }

@@ -10,9 +10,9 @@ import com.balazsholczer.repository.patient.PatientRepository;
 public class RemovePatientServiceImpl implements RemovePatientService {
 
 	@Autowired
-	private PatientRepository studentRepository;
+	private PatientRepository patientRepository;
 	
 	public void removePatient(Patient patient) {
-		studentRepository.delete(patient);
+		patientRepository.delete(patient.getId());
 	}
 }
